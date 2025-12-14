@@ -3,504 +3,1140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastre-se e Ganhe Bônus Exclusivo | Afiliado Confiável</title>
+    <title>Guia Completo de Apostas Online</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <style>
-        /* Reset e estilos base */
+        /* Reset e configurações básicas */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #cdd3f4, #d8ddf7);
-            color: #1d3ff2;
-            line-height: 1.5;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f7fa;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            padding: 12px;
+            font-size: 14px;
         }
         
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 15px;
-        }
-        
-        /* Banner */
-        .banner {
-            width: 100%;
-            height: 180px;
-            background: #3630d2 url('banner.webp');
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            text-align: center;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             padding: 20px;
+            position: relative;
         }
         
-        .banner-content h1 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: #e8ecec;
-        }
-        
-        .banner-content p {
-            font-size: 1rem;
-            max-width: 600px;
-        }
-        
-        /* Header */
+        /* Header compacto */
         header {
             text-align: center;
-            padding: 10px 0 20px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eaeaea;
         }
         
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: #2563eb;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        
+        .logo i {
+            color: #f59e0b;
+            margin-right: 8px;
+            font-size: 26px;
         }
         
         .tagline {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            color: #666;
+            font-size: 14px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.4;
         }
         
-        /* Layout principal */
-        .main-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            align-items: flex-start;
-            margin: 10px 0;
+        /* Progress Bar mais fina */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #eaeaea;
+            border-radius: 3px;
+            margin: 20px 0;
+            overflow: hidden;
         }
         
-        .benefits-section {
-            flex: 1;
-            min-width: 300px;
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            width: 12.5%;
+            transition: width 0.3s ease;
         }
         
-        .cta-section {
-            flex: 1;
-            min-width: 300px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Slides Container mais compacto */
+        .slides-wrapper {
+            min-height: 400px;
+            position: relative;
         }
         
-        /* Benefícios */
-        .section-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #fff;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+        .slide {
+            display: none;
+            animation: fadeIn 0.4s ease;
         }
         
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
+        .slide.active {
+            display: block;
         }
         
-        .benefit-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(5px);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .benefit-icon {
-            background: #fff;
-            color: #0c2461;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            margin-right: 12px;
-            flex-shrink: 0;
-        }
-        
-        .benefit-text h3 {
-            margin-bottom: 3px;
-            font-size: 0.95rem;
-        }
-        
-        .benefit-text p {
-            font-size: 0.8rem;
-            opacity: 0.9;
-        }
-        
-        /* CTA Section */
-        .cta-title {
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            color: #fff;
-            text-align: center;
-        }
-        
-        .steps {
-            margin: 15px 0;
-        }
-        
-        .step {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-        }
-        
-        .step-number {
-            background: #fff;
-            color: #0c2461;
-            width: 24px;
-            height: 24px;
+        .slide-number {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #2563eb;
+            color: white;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 0.8rem;
-            margin-right: 10px;
-            flex-shrink: 0;
+            font-size: 14px;
         }
         
-        .btn-register {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(to right, #445ff4, #7e90f6);
-            color: #69d7f9;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            box-shadow: 0 4px 10px hsla(173.5,84.3%,58.4%,0.857);
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-        
-        .btn-register:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(226,241,242,0.873);
-        }
-        
-        .affiliate-note {
-            margin-top: 10px;
-            font-size: 0.75rem;
-            opacity: 0.8;
-            text-align: center;
-        }
-        
-        /* Banner de bônus */
-        .bonus-banner {
-            background: linear-gradient(to right, #fff, #fff);
-            text-align: center;
-            padding: 10px;
-            border-radius: 8px;
+        .slide-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            color: #2563eb;
             margin-bottom: 15px;
+            margin-top: 5px;
+            line-height: 1.3;
         }
         
-        .bonus-banner h2 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
+        .slide-title.accent {
+            color: #f59e0b;
         }
         
-        .bonus-banner p {
-            font-size: 0.8rem;
+        .slide-text {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 18px;
+            line-height: 1.5;
         }
         
-        /* FAQ */
-        .faq-section {
-            margin-top: 30px;
-        }
-        
-        .faq-title {
+        .slide-icon {
+            font-size: 48px;
+            color: #2563eb;
             text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            color: #fff;
+            margin: 15px 0;
         }
         
-        .faq-item {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            margin-bottom: 10px;
-            overflow: hidden;
-            font-size: 0.9rem;
+        /* Question Cards mais compactos */
+        .question-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
         }
         
-        .faq-question {
-            padding: 12px 15px;
-            font-weight: 600;
+        .question {
+            background: white;
+            border: 1.5px solid #eaeaea;
+            border-radius: 10px;
+            padding: 18px;
             cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        
+        .question:hover {
+            border-color: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.08);
+        }
+        
+        .question.selected {
+            border-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.04);
+        }
+        
+        .question-icon {
+            font-size: 24px;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        
+        .question-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .question-desc {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        /* Options mais compactos */
+        .options-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .option {
+            background: white;
+            border: 1.5px solid #eaeaea;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        
+        .option:hover {
+            border-color: #2563eb;
+            transform: translateY(-1px);
+        }
+        
+        .option.selected {
+            border-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.04);
+        }
+        
+        .option-icon {
+            font-size: 32px;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+        
+        .option-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .option p {
+            font-size: 11px;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        /* Tip Box mais compacto */
+        .tip-box {
+            background: rgba(245, 158, 11, 0.06);
+            border-left: 3px solid #f59e0b;
+            padding: 16px;
+            border-radius: 0 6px 6px 0;
+            margin: 18px 0;
+        }
+        
+        .tip-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+        }
+        
+        .tip-title i {
+            color: #f59e0b;
+            font-size: 14px;
+        }
+        
+        .tip-box p {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        /* Navigation mais compacto */
+        .navigation {
             display: flex;
             justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
             align-items: center;
+            gap: 8px;
+            text-decoration: none;
         }
         
-        .faq-answer {
-            padding: 0 15px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            font-size: 0.85rem;
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
         
-        .faq-item.active .faq-answer {
-            padding: 0 15px 12px;
-            max-height: 500px;
+        .btn-accent {
+            background: #f59e0b;
+            color: #333;
         }
         
-        .faq-toggle {
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
+        .btn-accent:hover {
+            background: #d97706;
         }
         
-        .faq-item.active .faq-toggle {
-            transform: rotate(45deg);
+        .btn-outline {
+            background: white;
+            color: #2563eb;
+            border: 1.5px solid #2563eb;
         }
         
-        /* Rodapé */
+        .btn-outline:hover {
+            background: rgba(37, 99, 235, 0.05);
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        
+        /* Final Slide mais compacto */
+        .final-countdown {
+            background: #2563eb;
+            color: white;
+            padding: 15px;
+            border-radius: 25px;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .final-countdown span {
+            background: white;
+            color: #2563eb;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 6px;
+            font-size: 14px;
+        }
+        
+        /* Footer compacto */
         footer {
             text-align: center;
-            padding: 15px;
-            margin-top: 30px;
-            font-size: 0.8rem;
-            opacity: 0.7;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 35px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+            color: #666;
+            font-size: 11px;
         }
         
-        /* Responsividade */
+        footer p {
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #2563eb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 11px;
+        }
+        
+        .footer-links a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+        
+        /* Media Queries para telas menores */
         @media (max-width: 768px) {
-            .main-content {
+            body {
+                padding: 10px;
+                font-size: 13px;
+            }
+            
+            .container {
+                padding: 16px;
+                border-radius: 12px;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
+            
+            .logo i {
+                font-size: 22px;
+            }
+            
+            .tagline {
+                font-size: 12px;
+            }
+            
+            .slide-title {
+                font-size: 20px;
+                margin-bottom: 12px;
+            }
+            
+            .slide-text {
+                font-size: 12px;
+                margin-bottom: 15px;
+            }
+            
+            .slide-icon {
+                font-size: 40px;
+            }
+            
+            .question {
+                padding: 15px;
+            }
+            
+            .question-title {
+                font-size: 14px;
+            }
+            
+            .question-desc {
+                font-size: 11px;
+            }
+            
+            .options-container {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .option {
+                padding: 15px;
+            }
+            
+            .option-title {
+                font-size: 13px;
+            }
+            
+            .option p {
+                font-size: 10px;
+            }
+            
+            .tip-box {
+                padding: 14px;
+            }
+            
+            .tip-title {
+                font-size: 12px;
+            }
+            
+            .tip-box p {
+                font-size: 11px;
+            }
+            
+            .btn {
+                padding: 10px 18px;
+                font-size: 12px;
+            }
+            
+            .navigation {
+                margin-top: 25px;
+                padding-top: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+                font-size: 12px;
+            }
+            
+            .container {
+                padding: 14px;
+                border-radius: 10px;
+            }
+            
+            header {
+                margin-bottom: 20px;
+            }
+            
+            .logo {
+                font-size: 22px;
+            }
+            
+            .slide-title {
+                font-size: 18px;
+            }
+            
+            .slide-text, .question-desc, .option p, .tip-box p {
+                font-size: 11px;
+            }
+            
+            .question-title, .option-title {
+                font-size: 13px;
+            }
+            
+            .question, .option {
+                padding: 12px;
+            }
+            
+            .options-container {
+                gap: 8px;
+            }
+            
+            .btn {
+                padding: 9px 16px;
+                font-size: 11px;
+            }
+            
+            .final-countdown {
+                font-size: 12px;
+                padding: 12px;
+            }
+            
+            .final-countdown span {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
+            }
+            
+            footer {
+                margin-top: 25px;
+                font-size: 10px;
+            }
+            
+            .footer-links a {
+                font-size: 10px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .slide-title {
+                font-size: 16px;
+            }
+            
+            .slide-text, .question-desc, .option p, .tip-box p {
+                font-size: 10px;
+            }
+            
+            .navigation {
                 flex-direction: column;
+                gap: 10px;
             }
             
-            .benefits-section, .cta-section {
+            .btn {
                 width: 100%;
-            }
-            
-            .banner {
-                height: 150px;
-            }
-            
-            .banner-content h1 {
-                font-size: 1.4rem;
-            }
-            
-            .banner-content p {
-                font-size: 0.9rem;
+                justify-content: center;
             }
         }
         
-        /* Animações */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
+        /* Ajustes para melhor legibilidade em telas muito pequenas */
+        @media (max-height: 600px) {
+            .slides-wrapper {
+                min-height: 350px;
+            }
+            
+            .question-container, .options-container {
+                max-height: 250px;
+                overflow-y: auto;
+                padding-right: 5px;
+            }
+            
+            .question-container::-webkit-scrollbar,
+            .options-container::-webkit-scrollbar {
+                width: 4px;
+            }
+            
+            .question-container::-webkit-scrollbar-thumb,
+            .options-container::-webkit-scrollbar-thumb {
+                background: #ccc;
+                border-radius: 2px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Todo o conteúdo HTML permanece EXATAMENTE igual -->
     <div class="container">
-        <div class="banner">
-            
-        </div>
-        
         <header>
-            <div class="logo">APOSTAS ONLINE</div>
-            <p class="tagline">A plataforma de apostas mais confiável do mercado</p>
-                <h1>BÔNUS EXCLUSIVO PARA NOVOS USUÁRIOS</h1>
-                <p>Cadastre-se agora e ganhe 100% de bônus no primeiro depósito</p>
-            
+            <div class="logo">
+                <i class="fas fa-chart-line"></i>GUIA DE APOSTAS ONLINE
+            </div>
+            <p class="tagline">Conhecimento essencial para apostas com estratégia</p>
         </header>
         
-        <div class="main-content">
-            <div class="benefits-section">
-                <h2 class="section-title">Vantagens Exclusivas</h2>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <div class="slides-wrapper">
+            <!-- Slide 1: Introdução -->
+            <div class="slide active" id="slide1">
+                <div class="slide-number">1</div>
+                <div class="slide-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h1 class="slide-title">Domine os Fundamentos das Apostas</h1>
+                <p class="slide-text">Este guia foi desenvolvido para apresentar os conceitos essenciais que todo apostador precisa conhecer antes de começar.</p>
+                <p class="slide-text">Vamos explorar juntos os princípios básicos, estratégias de gestão e análises que podem fazer a diferença nos seus resultados.</p>
                 
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-gift"></i>
-                    </div>
-                    <div class="benefit-text">
-                        <h3>Bônus de Boas-Vindas</h3>
-                        <p>Até 200% de bônus no primeiro depósito</p>
-                    </div>
+                <div class="tip-box">
+                    <h3 class="tip-title"><i class="fas fa-clock"></i> Tempo estimado</h3>
+                    <p>Este conteúdo leva aproximadamente 5 minutos para ser completamente absorvido.</p>
                 </div>
                 
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <div class="benefit-text">
-                        <h3>Levantamentos Rápidos</h3>
-                        <p>Seu dinheiro em até 2 horas</p>
-                    </div>
-                </div>
-                
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <div class="benefit-text">
-                        <h3>Segurança Máxima</h3>
-                        <p>Dados protegidos com criptografia</p>
-                    </div>
-                </div>
-                
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="benefit-text">
-                        <h3>App Otimizado</h3>
-                        <p>Experiência perfeita em qualquer dispositivo</p>
-                    </div>
-                </div>
-                
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="benefit-text">
-                        <h3>Odds Competitivas</h3>
-                        <p>As melhores odds para maximizar ganhos</p>
-                    </div>
+                <div class="navigation">
+                    <button class="btn btn-outline" disabled>
+                        <i class="fas fa-arrow-left"></i> Voltar
+                    </button>
+                    <button class="btn" id="nextBtn1">
+                        Vamos começar <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
             </div>
             
-            <div class="cta-section">
-                <div class="bonus-banner pulse">
-                    <h2>OFERTA POR TEMPO LIMITADO</h2>
-                    <p>Cadastre-se agora e garanta seu bônus</p>
-                </div>
+            <!-- Slide 2: Perfil do Apostador -->
+            <div class="slide" id="slide2">
+                <div class="slide-number">2</div>
+                <h2 class="slide-title accent">Conheça seu perfil</h2>
+                <p class="slide-text">Antes de tudo, é importante entender seu nível de familiaridade com apostas. Selecione a opção que melhor descreve você:</p>
                 
-                <h2 class="cta-title">Cadastre-se em 3 Passos</h2>
-                
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-text">Clique no botão para acessar a página oficial</div>
+                <div class="question-container">
+                    <div class="question" id="optionBeginner">
+                        <div class="question-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3 class="question-title">Estou começando</h3>
+                        <p class="question-desc">Quero aprender desde o início, entender os conceitos básicos antes de apostar.</p>
                     </div>
                     
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-text">Preencha número e senha no cadastro</div>
+                    <div class="question" id="optionIntermediate">
+                        <div class="question-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="question-title">Já tenho experiência</h3>
+                        <p class="question-desc">Conheço o básico, mas quero aprofundar meu conhecimento e melhorar minhas estratégias.</p>
                     </div>
                     
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-text">Confirme os dados e comece a apostar!</div>
+                    <div class="question" id="optionAdvanced">
+                        <div class="question-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3 class="question-title">Sou experiente</h3>
+                        <p class="question-desc">Busco refinamento estratégico e informações avançadas para otimizar meus resultados.</p>
                     </div>
                 </div>
                 
-                <a href="https://media1.placard.co.mz/redirect.aspx?pid=5905&bid=1690" class="btn-register" id="registerButton">
-                    <i class="fas fa-user-plus"></i> CADASTRAR AGORA
-                </a>
+                <div class="navigation">
+                    <button class="btn btn-outline" id="prevBtn2">
+                        <i class="fas fa-arrow-left"></i> Anterior
+                    </button>
+                    <button class="btn" id="nextBtn2" disabled>
+                        Continuar <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Frequência -->
+            <div class="slide" id="slide3">
+                <div class="slide-number">3</div>
+                <h2 class="slide-title">Sua frequência</h2>
+                <p class="slide-text">Para personalizar as recomendações, nos conte com que frequência você costuma apostar:</p>
                 
-                <p class="affiliate-note">* Como afiliado oficial, garanto que este é o melhor bônus disponível</p>
+                <div class="options-container">
+                    <div class="option" id="freqRarely">
+                        <div class="option-icon">
+                            <i class="fas fa-calendar-times"></i>
+                        </div>
+                        <h3 class="option-title">Ocasionalmente</h3>
+                        <p>Apenas em eventos especiais ou grandes jogos</p>
+                    </div>
+                    
+                    <div class="option" id="freqMonthly">
+                        <div class="option-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="option-title">Algumas vezes no mês</h3>
+                        <p>Quando surge uma boa oportunidade</p>
+                    </div>
+                    
+                    <div class="option" id="freqWeekly">
+                        <div class="option-icon">
+                            <i class="fas fa-calendar-week"></i>
+                        </div>
+                        <h3 class="option-title">Toda semana</h3>
+                        <p>Costumo acompanhar os eventos regularmente</p>
+                    </div>
+                    
+                    <div class="option" id="freqDaily">
+                        <div class="option-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <h3 class="option-title">Diariamente</h3>
+                        <p>Faço parte da minha rotina de entretenimento</p>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn btn-outline" id="prevBtn3">
+                        <i class="fas fa-arrow-left"></i> Anterior
+                    </button>
+                    <button class="btn" id="nextBtn3" disabled>
+                        Continuar <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Fundamentos -->
+            <div class="slide" id="slide4">
+                <div class="slide-number">4</div>
+                <h2 class="slide-title">Entendendo as Odds</h2>
+                <p class="slide-text">As odds representam a probabilidade de um evento acontecer e determinam seu retorno potencial.</p>
+                
+                <div class="tip-box">
+                    <h3 class="tip-title"><i class="fas fa-percentage"></i> O que são odds?</h3>
+                    <p>Números que indicam o retorno potencial de uma aposta. Quanto menor a odd, maior a probabilidade do evento ocorrer segundo a casa.</p>
+                </div>
+                
+                <div class="tip-box">
+                    <h3 class="tip-title"><i class="fas fa-calculator"></i> Como calcular</h3>
+                    <p>Odd de 2.50 significa que para cada 20MT apostado, você recebe 40.50MT de volta (incluindo o valor apostado).</p>
+                </div>
+                
+                <div class="tip-box">
+                    <h3 class="tip-title"><i class="fas fa-search"></i> Identificando valor</h3>
+                    <p>O segredo está em encontrar odds que ofereçam maior retorno do que a probabilidade real do evento.</p>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn btn-outline" id="prevBtn4">
+                        <i class="fas fa-arrow-left"></i> Anterior
+                    </button>
+                    <button class="btn" id="nextBtn4">
+                        Próximo <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Gestão -->
+            <div class="slide" id="slide5">
+                <div class="slide-number">5</div>
+                <h2 class="slide-title">Gestão do seu capital</h2>
+                <p class="slide-text">Controlar seu bankroll é mais importante do que acertar apostas. Conheça as regras fundamentais:</p>
+                
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h3 class="option-title">Bankroll separado</h3>
+                        <p>Use apenas dinheiro destinado especificamente para apostas, nunca comprometa suas necessidades básicas.</p>
+                    </div>
+                    
+                    <div class="option">
+                        <div class="option-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3 class="option-title">Regra dos 1-3%</h3>
+                        <p>Nunca aposte mais que 1-3% do seu bankroll total em uma única aposta.</p>
+                    </div>
+                    
+                    <div class="option">
+                        <div class="option-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3 class="option-title">Registro completo</h3>
+                        <p>Anote todas as suas apostas para analisar desempenho e identificar pontos de melhoria.</p>
+                    </div>
+                    
+                    <div class="option">
+                        <div class="option-icon">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                        <h3 class="option-title">Controle emocional</h3>
+                        <p>Não aumente o valor das apostas para recuperar perdas. Mantenha a disciplina.</p>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn btn-outline" id="prevBtn5">
+                        <i class="fas fa-arrow-left"></i> Anterior
+                    </button>
+                    <button class="btn" id="nextBtn5">
+                        Próximo <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Análise -->
+            <div class="slide" id="slide6">
+                <div class="slide-number">6</div>
+                <h2 class="slide-title">Análise e pesquisa</h2>
+                <p class="slide-text">Apostas bem fundamentadas exigem pesquisa. Veja o que considerar antes de decidir:</p>
+                
+                <div class="tip-box">
+                    <h3 class="tip-title"><i class="fas fa-database"></i> Dados estatísticos</h3>
+                    <p>Estatísticas de desempenho, confrontos diretos, lesões, escalações e condições físicas.</p>
+                </div>
+                
+                <div class="tip-box">
+                    <h3 class="tip-title"><i class="fas fa-brain"></i> Contexto do jogo</h3>
+                    <p>Motivação das equipes, importância da partida, calendário, clima e local da partida.</p>
+                </div>
+                
+                <div class="tip-box">
+                    <h3 class="tip-title"><i class="fas fa-newspaper"></i> Fontes confiáveis</h3>
+                    <p>Prefira análises especializadas e estatísticas verificadas em vez de "dicas" não fundamentadas.</p>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn btn-outline" id="prevBtn6">
+                        <i class="fas fa-arrow-left"></i> Anterior
+                    </button>
+                    <button class="btn" id="nextBtn6">
+                        Próximo <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Slide 7: Psicologia -->
+            <div class="slide" id="slide7">
+                <div class="slide-number">7</div>
+                <h2 class="slide-title">A mentalidade correta</h2>
+                <p class="slide-text">Sua abordagem psicológica influencia diretamente seus resultados:</p>
+                
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="option-title">Decisões racionais</h3>
+                        <p>Baseie suas apostas em análise, não em emoções, preferências pessoais ou impulsos.</p>
+                    </div>
+                    
+                    <div class="option">
+                        <div class="option-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 class="option-title">Aceite as perdas</h3>
+                        <p>Elas fazem parte do processo. Uma sequência negativa não significa que sua estratégia está errada.</p>
+                    </div>
+                    
+                    <div class="option">
+                        <div class="option-icon">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                        <h3 class="option-title">Paciência estratégica</h3>
+                        <p>Espere pelas oportunidades certas. Não é necessário apostar em todos os jogos.</p>
+                    </div>
+                    
+                    <div class="option">
+                        <div class="option-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="option-title">Ajuste constante</h3>
+                        <p>Revise regularmente suas estratégias e aprenda com os resultados.</p>
+                    </div>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn btn-outline" id="prevBtn7">
+                        <i class="fas fa-arrow-left"></i> Anterior
+                    </button>
+                    <button class="btn" id="nextBtn7">
+                        Avançar <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Slide 8: Final -->
+            <div class="slide" id="slide8">
+                <div class="slide-number">8</div>
+                <div class="slide-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2 class="slide-title accent">Você está preparado</h2>
+                <p class="slide-text">Agora você conhece os princípios fundamentais para apostas mais conscientes e estratégicas.</p>
+                
+                <div class="tip-box">
+                    <h3 class="tip-title"><i class="fas fa-check-double"></i> Resumo do aprendizado</h3>
+                    <ul style="padding-left: 20px; margin-top: 10px; font-size: 12px;">
+                        <li>Compreende como funcionam as odds e probabilidades</li>
+                        <li>Sabe gerenciar seu capital de forma responsável</li>
+                        <li>Reconhece a importância da análise antes de apostar</li>
+                        <li>Entende o papel do controle emocional nos resultados</li>
+                    </ul>
+                </div>
+                
+                <div class="final-countdown" id="countdown">
+                    <i class="fas fa-clock"></i> Redirecionamento em: <span id="countdownNumber">20</span> segundos
+                </div>
+                
+                <p style="text-align: center; color: #666; margin: 15px 0; font-size: 12px;">
+                    Você será direcionado para uma plataforma onde poderá aplicar esses conhecimentos.
+                </p>
+                
+                <div style="text-align: center; margin: 20px 0;">
+                    <button class="btn btn-accent" id="finalCtaBtn" style="padding: 14px 30px; font-size: 14px;">
+                        <i class="fas fa-external-link-alt"></i> Acessar plataforma agora
+                    </button>
+                    <p style="margin-top: 12px; font-size: 11px; color: #666;">Cadastro rápido • Bônus disponível</p>
+                </div>
+                
+                <div class="navigation">
+                    <button class="btn btn-outline" id="prevBtn8">
+                        <i class="fas fa-arrow-left"></i> Anterior
+                    </button>
+                    <button class="btn btn-outline" id="skipCountdownBtn">
+                        <i class="fas fa-forward"></i> Pular contagem
+                    </button>
+                </div>
             </div>
         </div>
         
-        <div class="faq-section">
-            <h2 class="faq-title">Perguntas Frequentes</h2>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Como funciona o bônus de boas-vindas?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>O bônus é creditado automaticamente após seu primeiro depósito. Se depositar 100MZN, recebe mais 100MZN em bônus, totalizando 200MZN para apostar.</p>
-                </div>
+        <!-- Footer -->
+        <footer>
+            <p>© 2025 GUIA DE APOSTAS ONLINE. Este conteúdo tem finalidade educacional. Apostas envolvem risco de perda financeira.</p>
+            <p>Recomendamos jogar com responsabilidade e nunca comprometer seu bem-estar financeiro.</p>
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-shield-alt"></i> Jogo responsável</a>
+                <a href="#"><i class="fas fa-user-lock"></i> Privacidade</a>
+                <a href="#"><i class="fas fa-question-circle"></i> Ajuda</a>
             </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Quanto tempo leva para o Levantamento ser processado?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Levantamentos processados em até 10 minutos em dias úteis. Finais de semana podem ter pequena demora.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Preciso enviar documentos para me cadastrar?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Cadastro inicial requer apenas número de telefone. Documentos são solicitados posteriormente quando houver problemas de Levantamento ou recuperação de conta.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Posso jogar pelo celular?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Sim! A plataforma é totalmente otimizada para mobile. Acesse pelo navegador ou baixe o app oficial.</p>
-                </div>
-            </div>
-        </div>
+        </footer>
     </div>
-    
-    <footer>
-        <p>© 2025 Afiliado Oficial. Todos os direitos reservados. Jogue com responsabilidade. Apenas para maiores de 18 anos.</p>
-        <p>Este site é operado por um afiliado </p>
-    </footer>
 
     <script>
-      
-    // Redireciona após 5 segundos sem mostrar contagem
-    setTimeout(() => {
-        window.location.href = 'https://media1.placard.co.mz/redirect.aspx?pid=5905&bid=1690';
-    }, 5000);
-
-        // FAQ toggle functionality
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentNode;
-                item.classList.toggle('active');
+        // O JavaScript permanece exatamente igual
+        // Dados do usuário
+        const userData = {
+            experience: null,
+            frequency: null
+        };
+        
+        // Elementos DOM
+        const slides = document.querySelectorAll('.slide');
+        const progressBar = document.getElementById('progressBar');
+        const nextButtons = document.querySelectorAll('[id^="nextBtn"]');
+        const prevButtons = document.querySelectorAll('[id^="prevBtn"]');
+        const finalCtaBtn = document.getElementById('finalCtaBtn');
+        const countdownElement = document.getElementById('countdownNumber');
+        const skipCountdownBtn = document.getElementById('skipCountdownBtn');
+        
+        // Estado atual
+        let currentSlide = 0;
+        let totalSlides = slides.length;
+        let countdownInterval;
+        let countdownTime = 5;
+        let countdownActive = false;
+        
+        // Inicialização
+        updateProgressBar();
+        
+        // Seleção de experiência (Slide 2)
+        const experienceOptions = document.querySelectorAll('#slide2 .question');
+        experienceOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remover seleção anterior
+                experienceOptions.forEach(opt => opt.classList.remove('selected'));
+                
+                // Selecionar atual
+                this.classList.add('selected');
+                
+                // Salvar dados
+                if (this.id === 'optionBeginner') {
+                    userData.experience = 'beginner';
+                } else if (this.id === 'optionIntermediate') {
+                    userData.experience = 'intermediate';
+                } else if (this.id === 'optionAdvanced') {
+                    userData.experience = 'advanced';
+                }
+                
+                // Ativar botão
+                document.getElementById('nextBtn2').disabled = false;
             });
         });
         
-        
-        document.getElementById('registerButton').addEventListener('click', function() {
-
-            
-
-            setTimeout(() => {
-                window.location.href = this.href;
-            }, 300);
+        // Seleção de frequência (Slide 3)
+        const frequencyOptions = document.querySelectorAll('#slide3 .option');
+        frequencyOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remover seleção anterior
+                frequencyOptions.forEach(opt => opt.classList.remove('selected'));
+                
+                // Selecionar atual
+                this.classList.add('selected');
+                
+                // Salvar dados
+                if (this.id === 'freqRarely') {
+                    userData.frequency = 'rarely';
+                } else if (this.id === 'freqMonthly') {
+                    userData.frequency = 'monthly';
+                } else if (this.id === 'freqWeekly') {
+                    userData.frequency = 'weekly';
+                } else if (this.id === 'freqDaily') {
+                    userData.frequency = 'daily';
+                }
+                
+                // Ativar botão
+                document.getElementById('nextBtn3').disabled = false;
+            });
         });
+        
+        // Botões "Próximo"
+        nextButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Validações específicas
+                if (currentSlide === 1 && !userData.experience) {
+                    alert('Por favor, selecione seu nível de experiência.');
+                    return;
+                }
+                
+                if (currentSlide === 2 && !userData.frequency) {
+                    alert('Por favor, selecione sua frequência de apostas.');
+                    return;
+                }
+                
+                // Se indo para o slide final, iniciar contagem
+                if (currentSlide === totalSlides - 2) {
+                    goToSlide(currentSlide + 1);
+                    startCountdown();
+                } else {
+                    goToSlide(currentSlide + 1);
+                }
+            });
+        });
+        
+        // Botões "Anterior"
+        prevButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Se saindo do slide final, parar contagem
+                if (currentSlide === totalSlides - 1) {
+                    stopCountdown();
+                }
+                goToSlide(currentSlide - 1);
+            });
+        });
+        
+        // Botão final (CTA)
+        finalCtaBtn.addEventListener('click', function() {
+            redirectToAffiliate();
+        });
+        
+        // Botão para pular contagem
+        skipCountdownBtn.addEventListener('click', function() {
+            stopCountdown();
+            redirectToAffiliate();
+        });
+        
+        // Função para navegar entre slides
+        function goToSlide(slideIndex) {
+            // Verificar limites
+            if (slideIndex < 0 || slideIndex >= totalSlides) return;
+            
+            // Atualizar slide atual
+            currentSlide = slideIndex;
+            
+            // Atualizar visibilidade dos slides
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active');
+                
+                if (index === slideIndex) {
+                    slide.classList.add('active');
+                }
+            });
+            
+            // Atualizar barra de progresso
+            updateProgressBar();
+            
+            // Rolar para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Atualizar barra de progresso
+        function updateProgressBar() {
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+        
+        // Contagem regressiva
+        function startCountdown() {
+            countdownActive = true;
+            countdownTime = 20;
+            countdownElement.textContent = countdownTime;
+            
+            countdownInterval = setInterval(() => {
+                countdownTime--;
+                countdownElement.textContent = countdownTime;
+                
+                if (countdownTime <= 0) {
+                    stopCountdown();
+                    redirectToAffiliate();
+                }
+            }, 1000);
+        }
+        
+        function stopCountdown() {
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+            }
+            countdownActive = false;
+        }
+        
+        // Redirecionamento
+        function redirectToAffiliate() {
+            // Substituir pelo seu link de afiliado
+            window.location.href = 'https://media1.placard.co.mz/redirect.aspx?pid=5905&bid=1690';
+        }
+        
+        // Teclado shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight') {
+                nextButtons[currentSlide]?.click();
+            } else if (e.key === 'ArrowLeft') {
+                prevButtons[currentSlide]?.click();
+            }
+        });
+        
+        // Debug
+        console.log('Sistema carregado com sucesso!');
     </script>
 </body>
 </html>
