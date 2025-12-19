@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente Paulo - Guia de Apostas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 10px;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2980, #26d0ce);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+        }
+
+        /* Cabeçalho */
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .status-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--success-color);
+            border-radius: 50%;
+            margin-right: 5px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Área de conversa */
+        .chat-container {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            background-color: #f9f9f9;
+            scroll-behavior: smooth; /* Scroll suave */
+        }
+
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+            padding: 12px 15px;
+            border-radius: var(--border-radius);
+            line-height: 1.5;
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bot-message {
+            background-color: var(--secondary-color);
+            color: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        .user-message {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .system-message {
+            background-color: #f1c40f;
+            color: var(--dark-color);
+            align-self: center;
+            text-align: center;
+            font-size: 0.9rem;
+            max-width: 90%;
+        }
+
+        .message-time {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        /* Área de botões */
+        .options-container {
+            padding: 15px 20px;
+            background-color: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .option-btn {
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .option-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .option-btn:active {
+            transform: translateY(0);
+        }
+
+        .option-btn.secondary {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        .option-btn.secondary:hover {
+            background-color: #d5dbdb;
+        }
+
+        /* Área de upload */
+        .upload-container {
+            padding: 20px;
+            background-color: white;
+            border-top: 1px solid #eee;
+            display: none;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--secondary-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .upload-area:hover {
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .upload-btn {
+            padding: 12px 30px;
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .upload-btn:hover {
+            background-color: #219653;
+        }
+
+        .upload-btn:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: var(--border-radius);
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* Exemplo de comprovante */
+        .example-container {
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .example-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--dark-color);
+        }
+
+        .example-thumbnail {
+            width: 180px;
+            height: 120px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+            border: 3px solid white;
+            object-fit: cover;
+        }
+
+        .example-thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary-color);
+        }
+
+        .example-caption {
+            font-size: 0.8rem;
+            margin-top: 5px;
+            color: #666;
+        }
+
+        /* Modal para visualização da imagem em tamanho grande */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeInModal 0.3s;
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close-modal:hover {
+            color: var(--secondary-color);
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 1rem;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* Links */
+        .link-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .link-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .link-btn.secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .link-btn.secondary:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                height: 95vh;
+                max-width: 100%;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .message {
+                max-width: 90%;
+            }
+            
+            .option-btn {
+                min-width: 100%;
+            }
+            
+            .status-indicator {
+                position: static;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            
+            .example-thumbnail {
+                width: 150px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                height: 100vh;
+                border-radius: 0;
+            }
+            
+            .header, .chat-container, .options-container {
+                padding: 15px;
+            }
+            
+            .message {
+                padding: 10px 12px;
+                font-size: 0.95rem;
+            }
+            
+            .example-thumbnail {
+                width: 130px;
+                height: 90px;
+            }
+        }
+
+        /* Animações de carregamento */
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            align-self: flex-start;
+            margin-bottom: 15px;
+            width: 60px;
+        }
+
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background-color: white;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(1) {
+            animation-delay: -0.3s;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: -0.15s;
+        }
+
+        @keyframes bounce {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Progresso */
+        .progress-container {
+            margin-top: 10px;
+            background-color: #eee;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 10px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--success-color);
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+        
+        /* Botão para rolar para baixo quando houver novas mensagens */
+        .scroll-down-btn {
+            position: absolute;
+            bottom: 80px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .scroll-down-btn.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .scroll-down-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho -->
+        <div class="header">
+            <h1><i class="fas fa-robot"></i> Assistente Paulo</h1>
+            <p>Guia de Apostas e Casino Online</p>
+            <div class="status-indicator">
+                <div class="status-dot"></div>
+                <span>Online</span>
+            </div>
+        </div>
+
+        <!-- Área de conversa -->
+        <div class="chat-container" id="chatContainer">
+            <div class="message bot-message">
+                Olá, eu sou o Assistente Paulo! Em que posso ajudar?
+                <div class="message-time" id="currentTime"></div>
+            </div>
+        </div>
+        
+        <!-- Botão para rolar para baixo -->
+        <div class="scroll-down-btn" id="scrollDownBtn">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <!-- Área de botões -->
+        <div class="options-container" id="optionsContainer">
+            <button class="option-btn" data-option="opt1">
+                <i class="fas fa-book"></i> Quero receber o guia de apostas e casino online
+            </button>
+            <button class="option-btn secondary" data-option="opt2">
+                <i class="fas fa-info-circle"></i> Quero saber sobre o guia
+            </button>
+        </div>
+
+        <!-- Área de upload -->
+        <div class="upload-container" id="uploadContainer">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3>Arraste e solte seu comprovante aqui</h3>
+                <p>ou clique para selecionar um arquivo</p>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                <img id="previewImage" class="preview-image" alt="Pré-visualização">
+            </div>
+            
+            <div class="progress-container" id="progressContainer" style="display: none;">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <button class="upload-btn" id="uploadBtn" disabled>
+                <i class="fas fa-paper-plane"></i> Enviar comprovante para validação
+            </button>
+            
+            <div style="text-align: center; margin-top: 15px;">
+                <a href="#" class="link-btn secondary" id="backToMenuBtn">
+                    <i class="fas fa-arrow-left"></i> Voltar ao menu
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para visualização da imagem de exemplo em tamanho grande -->
+    <div id="exampleModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
+    <script>
+        // Elementos DOM
+        const chatContainer = document.getElementById('chatContainer');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const uploadContainer = document.getElementById('uploadContainer');
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const previewImage = document.getElementById('previewImage');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const backToMenuBtn = document.getElementById('backToMenuBtn');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const currentTimeElement = document.getElementById('currentTime');
+        const scrollDownBtn = document.getElementById('scrollDownBtn');
+        
+        // Elementos do modal
+        const exampleModal = document.getElementById('exampleModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeModal = document.querySelector('.close-modal');
+
+        // Estado da conversa
+        let conversationState = 'MAIN_MENU';
+        let randomPosition = Math.floor(Math.random() * (368 - 52 + 1)) + 52;
+        
+        // Links
+        const CREATE_ACCOUNT_URL = "https://media1.placard.co.mz/redirect.aspx?pid=5905&bid=1690";
+        const EXAMPLE_URL = "https://guia-apostas-mz.vercel.app/exemplo.html";
+        const GUIDE_LINK = "guia-completo.html";
+
+        // Imagem de exemplo (pode ser substituída por qualquer URL de imagem)
+        // Usando uma imagem de exemplo de comprovante bancário genérico
+        const EXAMPLE_IMAGE_URL = "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80";
+
+        // Atualizar hora atual
+        function updateCurrentTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' });
+            currentTimeElement.textContent = timeString;
+        }
+        
+        // Inicializar hora
+        updateCurrentTime();
+        setInterval(updateCurrentTime, 60000);
+
+        // Função para rolar automaticamente para a última mensagem
+        function scrollToBottom() {
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+        
+        // Verificar se precisa mostrar o botão de scroll
+        function checkScrollButton() {
+            // Verifica se o usuário não está na parte inferior do chat
+            const isScrolledToBottom = chatContainer.scrollHeight - chatContainer.clientHeight <= chatContainer.scrollTop + 100;
+            
+            if (isScrolledToBottom) {
+                scrollDownBtn.classList.remove('visible');
+            } else {
+                scrollDownBtn.classList.add('visible');
+            }
+        }
+        
+        // Configurar evento de scroll no chat
+        chatContainer.addEventListener('scroll', checkScrollButton);
+        
+        // Configurar clique no botão de scroll
+        scrollDownBtn.addEventListener('click', () => {
+            scrollToBottom();
+        });
+
+        // Adicionar mensagem ao chat
+        function addMessage(text, sender = 'bot', isSystem = false) {
+            const messageDiv = document.createElement('div');
+            
+            if (isSystem) {
+                messageDiv.className = 'message system-message';
+            } else if (sender === 'bot') {
+                messageDiv.className = 'message bot-message';
+            } else {
+                messageDiv.className = 'message user-message';
+            }
+            
+            messageDiv.innerHTML = text;
+            
+            // Adicionar timestamp
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('pt-PT', { hour: '2-digit', minute: '2-digit' });
+            messageDiv.innerHTML += `<div class="message-time">${timeString}</div>`;
+            
+            chatContainer.appendChild(messageDiv);
+            
+            // Scroll para a última mensagem com um pequeno delay
+            setTimeout(scrollToBottom, 100);
+            
+            // Verificar se precisa mostrar o botão de scroll
+            setTimeout(checkScrollButton, 150);
+            
+            return messageDiv;
+        }
+
+        // Simular digitação do bot
+        function simulateTyping(callback, delay = 1000) {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing-indicator';
+            typingDiv.innerHTML = '<span></span><span></span><span></span>';
+            chatContainer.appendChild(typingDiv);
+            
+            // Scroll para mostrar o indicador de digitação
+            setTimeout(scrollToBottom, 50);
+            
+            setTimeout(() => {
+                typingDiv.remove();
+                callback();
+                
+                // Scroll novamente após remover o indicador
+                setTimeout(scrollToBottom, 100);
+            }, delay);
+        }
+
+        // Mostrar opções de botão
+        function showOptions(options) {
+            optionsContainer.innerHTML = '';
+            
+            options.forEach(option => {
+                const button = document.createElement('button');
+                button.className = `option-btn ${option.secondary ? 'secondary' : ''}`;
+                button.innerHTML = option.icon ? `<i class="${option.icon}"></i> ${option.text}` : option.text;
+                button.setAttribute('data-option', option.value);
+                button.addEventListener('click', () => handleOptionClick(option.value));
+                optionsContainer.appendChild(button);
+            });
+            
+            // Scroll para mostrar as opções
+            setTimeout(scrollToBottom, 150);
+        }
+
+        // Criar elemento de exemplo de comprovante
+        function createExampleElement() {
+            const exampleDiv = document.createElement('div');
+            exampleDiv.className = 'example-container';
+            exampleDiv.innerHTML = `
+                <span class="example-title">Exemplo de comprovante:</span>
+                <img src="${EXAMPLE_IMAGE_URL}" alt="Exemplo de Comprovante" class="example-thumbnail" id="exampleThumbnail">
+                <div class="example-caption">Clique na imagem para ampliar</div>
+            `;
+            
+            // Adicionar evento de clique para abrir o modal
+            const thumbnail = exampleDiv.querySelector('#exampleThumbnail');
+            thumbnail.addEventListener('click', () => {
+                openModal(EXAMPLE_IMAGE_URL, 'Exemplo de comprovante bancário');
+            });
+            
+            return exampleDiv;
+        }
+
+        // Abrir modal com imagem
+        function openModal(imageSrc, caption) {
+            modalImage.src = imageSrc;
+            modalCaption.textContent = caption;
+            exampleModal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Impede scroll da página principal
+        }
+
+        // Fechar modal
+        function closeModalFunc() {
+            exampleModal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restaura scroll
+        }
+
+        // Configurar eventos do modal
+        closeModal.addEventListener('click', closeModalFunc);
+        
+        // Fechar modal ao clicar fora da imagem
+        exampleModal.addEventListener('click', (e) => {
+            if (e.target === exampleModal) {
+                closeModalFunc();
+            }
+        });
+
+        // Fechar modal com tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && exampleModal.style.display === 'block') {
+                closeModalFunc();
+            }
+        });
+
+        // Manipular clique nas opções
+        function handleOptionClick(option) {
+            // Adicionar mensagem do usuário
+            let userMessage = '';
+            if (option === 'opt1') {
+                userMessage = 'Olá, Quero receber o guia de apostas e casino online.';
+            } else if (option === 'opt2') {
+                userMessage = 'Olá, quero saber sobre o guia.';
+            } else if (option === 'opt101') {
+                userMessage = 'Sim, quero continuar!';
+            } else if (option === 'opt102') {
+                userMessage = 'Não, obrigado.';
+            } else if (option === 'opt0') {
+                userMessage = 'Voltar ao menu principal';
+            }
+            
+            addMessage(userMessage, 'user');
+            
+            // Processar opção selecionada
+            processOption(option);
+        }
+
+        // Processar opção selecionada
+        function processOption(option) {
+            switch(option) {
+                case 'opt1':
+                    simulateTyping(() => {
+                        const message = `Ótimo, você está na posição ${randomPosition} dos usuários que solicitam o guia hoje, quer continuar?`;
+                        addMessage(message);
+                        
+                        showOptions([
+                            { text: 'Sim', value: 'opt101', icon: 'fas fa-check' },
+                            { text: 'Não', value: 'opt102', icon: 'fas fa-times' },
+                            { text: 'Voltar ao menu principal', value: 'opt0', icon: 'fas fa-home' }
+                        ]);
+                    });
+                    break;
+                    
+                case 'opt2':
+                    simulateTyping(() => {
+                        const message = `Ótimo, o guia de apostas online é a melhor ferramenta que você pode conhecer hoje. Este guia serve para ajudar os iniciantes em apostas online, lá tem quase tudo que você precisa aprender e entender, sinta-se à vontade para receber esse guia de ouro. Deseja continuar?`;
+                        addMessage(message);
+                        
+                        showOptions([
+                            { text: 'Sim', value: 'opt101', icon: 'fas fa-check' },
+                            { text: 'Não', value: 'opt102', icon: 'fas fa-times' },
+                            { text: 'Voltar ao menu principal', value: 'opt0', icon: 'fas fa-home' }
+                        ]);
+                    });
+                    break;
+                    
+                case 'opt101':
+                    simulateTyping(() => {
+                        const messageDiv = document.createElement('div');
+                        messageDiv.innerHTML = `Ótimo! Crie nova conta aqui para verificar:<br>
+                                        <a href="${CREATE_ACCOUNT_URL}" target="_blank" class="link-btn">Criar conta</a><br><br>
+                                        E mande comprovante como esse exemplo:`;
+                        
+                        const exampleElement = createExampleElement();
+                        
+                        const finalMessage = addMessage('', 'bot');
+                        finalMessage.appendChild(messageDiv);
+                        finalMessage.appendChild(exampleElement);
+                        
+                        // Adicionar texto adicional
+                        const additionalText = document.createElement('div');
+                        additionalText.style.marginTop = '15px';
+                        additionalText.innerHTML = `Por favor, envie seu comprovante (imagem) para prosseguir.`;
+                        finalMessage.appendChild(additionalText);
+                        
+                        // Scroll para mostrar a mensagem completa
+                        setTimeout(scrollToBottom, 200);
+                        
+                        // Mostrar área de upload
+                        optionsContainer.style.display = 'none';
+                        uploadContainer.style.display = 'block';
+                        conversationState = 'WAIT_PHOTO';
+                    });
+                    break;
+                    
+                case 'opt102':
+                    simulateTyping(() => {
+                        const message = 'Ok, você pode voltar ao menu.';
+                        addMessage(message);
+                        
+                        showOptions([
+                            { text: 'Quero receber o guia', value: 'opt1', icon: 'fas fa-book' },
+                            { text: 'Quero saber sobre este guia', value: 'opt2', icon: 'fas fa-info-circle' }
+                        ]);
+                    });
+                    break;
+                    
+                case 'opt0':
+                    simulateTyping(() => {
+                        const message = 'Menu principal:';
+                        addMessage(message);
+                        
+                        showOptions([
+                            { text: 'Quero receber o guia', value: 'opt1', icon: 'fas fa-book' },
+                            { text: 'Quero saber sobre este guia', value: 'opt2', icon: 'fas fa-info-circle' }
+                        ]);
+                    });
+                    break;
+            }
+        }
+
+        // Manipular upload de imagem
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // Arrastar e soltar
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.backgroundColor = 'rgba(52, 152, 219, 0.1)';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.backgroundColor = '';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.backgroundColor = '';
+            
+            if (e.dataTransfer.files.length) {
+                handleFileSelect(e.dataTransfer.files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                handleFileSelect(e.target.files[0]);
+            }
+        });
+
+        // Manipular seleção de arquivo
+        function handleFileSelect(file) {
+            if (!file.type.match('image.*')) {
+                addMessage('Por favor, selecione apenas arquivos de imagem.', 'bot');
+                return;
+            }
+            
+            // Mostrar pré-visualização
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                previewImage.src = e.target.result;
+                previewImage.style.display = 'block';
+                uploadBtn.disabled = false;
+                
+                // Adicionar mensagem do usuário
+                addMessage('Enviei meu comprovante: ' + file.name, 'user');
+                
+                // Scroll para mostrar a imagem
+                setTimeout(scrollToBottom, 200);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Processar envio do comprovante
+        uploadBtn.addEventListener('click', () => {
+            // Mostrar barra de progresso
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+            
+            // Scroll para mostrar a barra de progresso
+            setTimeout(scrollToBottom, 100);
+            
+            // Simular processamento
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 20;
+                if (progress > 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    
+                    // Simular validação (sucesso em 80% dos casos)
+                    const isApproved = Math.random() > 0.2;
+                    
+                    setTimeout(() => {
+                        if (isApproved) {
+                            addMessage(`✅ Comprovante aprovado! Aqui está o link para baixar o guia:<br>
+                                        <a href="${GUIDE_LINK}" target="_blank" class="link-btn">Acessar Conteúdo</a>`, 'bot');
+                        } else {
+                            addMessage('❌ Erro na validação do comprovante. Por favor, tente novamente ou entre em contato com o suporte.', 'bot');
+                        }
+                        
+                        // Resetar upload
+                        previewImage.style.display = 'none';
+                        previewImage.src = '';
+                        uploadBtn.disabled = true;
+                        progressContainer.style.display = 'none';
+                        
+                        // Mostrar menu novamente
+                        showOptions([
+                            { text: 'Quero receber o guia', value: 'opt1', icon: 'fas fa-book' },
+                            { text: 'Quero saber sobre este guia', value: 'opt2', icon: 'fas fa-info-circle' }
+                        ]);
+                        
+                        optionsContainer.style.display = 'flex';
+                        uploadContainer.style.display = 'none';
+                        conversationState = 'MAIN_MENU';
+                    }, 500);
+                }
+                
+                progressBar.style.width = progress + '%';
+            }, 200);
+        });
+
+        // Voltar ao menu
+        backToMenuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Adicionar mensagem do usuário
+            addMessage('Voltar ao menu', 'user');
+            
+            // Mostrar menu
+            optionsContainer.style.display = 'flex';
+            uploadContainer.style.display = 'none';
+            
+            simulateTyping(() => {
+                addMessage('Menu principal:');
+                
+                showOptions([
+                    { text: 'Quero receber o guia', value: 'opt1', icon: 'fas fa-book' },
+                    { text: 'Quero saber sobre este guia', value: 'opt2', icon: 'fas fa-info-circle' }
+                ]);
+                
+                conversationState = 'MAIN_MENU';
+            });
+        });
+
+        // Inicializar com opções principais
+        showOptions([
+            { text: 'Quero receber o guia de apostas e casino online', value: 'opt1', icon: 'fas fa-book' },
+            { text: 'Quero saber sobre o guia', value: 'opt2', icon: 'fas fa-info-circle', secondary: true }
+        ]);
+        
+        // Inicializar verificação do botão de scroll
+        checkScrollButton();
+    </script>
+</body>
+</html>
